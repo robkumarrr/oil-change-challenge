@@ -47,5 +47,3 @@ A car needs an oil change if either of the following is true:
 - `GET /` → Show the form
 - `POST /check` → Handle submission
 - `GET /result/{id}` → Show the result
-
-## Submission
