@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
+            $table->integer('current_odometer');
+            $table->date('date_of_prev_oil_change');
+            $table->integer('odometer_at_prev_oil_change');
             $table->timestamps();
         });
     }
