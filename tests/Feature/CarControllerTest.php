@@ -8,8 +8,9 @@ describe('Tests for the car controller', function() {
             'odometer_at_prev_oil_change' => 9000,
         ];
 
-        $this->post('car.create', $data);
+        $this->post('car.store', $data);
 
+        $this->assertDatabaseCount('cars', 1);
         $this->assertDatabaseHas('cars', $data);
     });
 

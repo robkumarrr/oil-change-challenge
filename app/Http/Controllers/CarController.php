@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarStoreRequest;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CarController extends Controller
 {
@@ -26,9 +28,14 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CarStoreRequest $request)
     {
-        //
+        $validated = $request->validated;
+        Log::info('Trying to store a new car with data: ', $validated);
+
+        $car = Car::query()->create($validated);
+
+        return redirect()->with('success', "Created a new car with ID {$car->id}");
     }
 
     /**
